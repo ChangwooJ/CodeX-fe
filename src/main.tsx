@@ -28,3 +28,16 @@ enableMocking().then(() => {
     </StrictMode>,
   );
 });
+
+/*
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </QueryClientProvider>
+  </StrictMode>,
+);
+*/

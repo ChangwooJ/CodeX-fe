@@ -1,22 +1,20 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { ChallengeType } from "../types/challengeType";
+import { ChallengeResponseType } from "../types/challengeType";
 import { getChallenges } from "../api/challenges.api";
 
 export const useGetChallenges = (
-  problemId: number,
-  difficulty: number,
-  tags: string,
-  title: string,
+  title: string | undefined,
+  difficulty: number | undefined,
+  tags: string | undefined,
 ) => {
-  return useSuspenseQuery<ChallengeType>({
+  return useSuspenseQuery<ChallengeResponseType>({
     queryKey: [
       "problems",
-      problemId,
-      difficulty,
-      tags,
-      title,
+      title || "",
+      difficulty || "",
+      tags || "",
     ],
     queryFn: () =>
-      getChallenges(problemId, difficulty, tags, title),
+      getChallenges(title, difficulty, tags),
   });
 };

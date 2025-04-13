@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import ChallengeUnit from "./components/ChallengeUnit";
-import { ChallengeType } from "./types/challengeType";
 import styled from "styled-components";
 import { useGetChallenges } from "./query/challenges.query";
+import { useFilterStore } from "../../store/useFilterStore";
 
 const ChallengeListWrapper = styled.div`
   border: 1px solid var(--primary-border-color);
@@ -38,14 +37,15 @@ const ChallengeAccuracy = styled(CommonTitleStyle)`
 `;
 
 const ChallengeList = () => {
+  const { title, difficulty, tags } = useFilterStore();
+
   const { data } = useGetChallenges(
-    problemId,
     title,
     difficulty,
     tags,
   );
 
-  const { challenges } = data.data;
+  const challenges = data.content;
 
   const handleShowChallenge = () => {
 

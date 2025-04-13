@@ -1,8 +1,12 @@
 export interface ChallengeType {
-  problem_id: number;
+  problemId: number;
   title: string;
   difficulty: number;
   tag: string;
   total_submitted: number;
   total_accuracy: number;
+}
+
+export interface ChallengeResponseType {
+  content: ChallengeType[];
 }

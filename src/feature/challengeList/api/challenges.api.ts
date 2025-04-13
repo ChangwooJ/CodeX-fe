@@ -1,18 +1,16 @@
-import { ChallengeType } from "../types/challengeType";
+import { ChallengeResponseType } from "../types/challengeType";
 import axios from "axios";
 
 export const getChallenges = async (
-  problemId: number,
-  difficulty: number,
-  tags: string,
-  title: string,
-): Promise<ChallengeType> => {
+  title?: string,
+  difficulty?: number,
+  tags?: string,
+): Promise<ChallengeResponseType> => {
   const params = Object.fromEntries(
     Object.entries({
-      problemId,
+      title,
       difficulty,
       tags,
-      title,
     })
   );
   const { data } = await axios.get(`http://localhost:8000/api/challenges`, { params });
