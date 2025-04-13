@@ -29,10 +29,11 @@ const NavigationSection = styled.div`
 `;
 
 const LoginButton = styled.button`
-  border: 1px solid #939496;
+  border: 1px solid var(--primary-border-color);
   border-radius: 5px;
-  padding: 5px 10px;
-  background-color: #f6f6f6;
+  padding: 7px 15px;
+  background-color: transparent;
+  font-weight: bold;
   cursor: pointer;
 `;
 
@@ -40,6 +41,11 @@ const LoginSection = styled.div`
   width: 20%;
   display: flex;
   justify-content: center;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
 
 const Header = () => {
@@ -53,14 +59,14 @@ const Header = () => {
     <HeaderContainer>
       <HeaderContain>
         <LogoSection>
-          <Link to="/">
-            <div 
-              onClick={handleHomeClick} 
-              style={{ cursor: "pointer", border: "1px solid black", padding: "10px 20px", borderRadius: "5px", fontSize: "1.2rem", textDecoration: "none", color: "inherit" }}
+          <StyledLink to="/">
+            <div
+              onClick={handleHomeClick}
+              style={{ cursor: "pointer", fontSize: "2rem", fontWeight: "bold" }}
             >
               CodeX
             </div>
-          </Link>
+          </StyledLink>
         </LogoSection>
         <NavigationSection></NavigationSection>
         <LoginSection>

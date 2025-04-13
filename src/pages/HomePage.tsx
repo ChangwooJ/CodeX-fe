@@ -3,10 +3,11 @@ import styled from "styled-components";
 import SearchConsol from "../feature/searchConsol/searchConsol";
 
 const HomePageWrapper = styled.div`
-  margin-left: 10%;
-  width: 80%;
+  padding: 0 10%;
+  width: 100%;
   height: 100vh;
   padding-top: 2%;
+  background-color: var(--primary-background-color);
 `;
 
 const ChallengeListContainer = styled.div`

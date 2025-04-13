@@ -4,9 +4,27 @@ import { useGetChallenges } from "./query/challenges.query";
 import { useFilterStore } from "../../store/useFilterStore";
 import { useSearchParams } from "react-router-dom";
 
+const ChallengeListHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  height: 3%;
+  margin-bottom: 2%;
+`;
+
+const ChallengeCount = styled.div`
+  font-weight: bold;
+`;
+
+const ChallengeSort = styled.select`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
 const ChallengeListWrapper = styled.div`
   border: 1px solid var(--primary-border-color);
   border-radius: 5px;
+  background-color: white;
 `;
 
 const CommonTitleStyle = styled.div`
@@ -56,24 +74,32 @@ const ChallengeList = () => {
 
   }
 
-  return(
-    <ChallengeListWrapper>
-      <ListTitle>
-        <ChallengeStatus>상태</ChallengeStatus>
-        <ChallengeTitle>제목</ChallengeTitle>
-        <ChallengeDifficulty>난이도</ChallengeDifficulty>
-        <ChallengeSubmitted>완료한 사람</ChallengeSubmitted>
-        <ChallengeAccuracy>정답률</ChallengeAccuracy>
-      </ListTitle>
-      {challenges.map((challenge) => (
-        <ChallengeUnit 
-          key={challenge.problemId}
-          challenge={challenge} 
-          onClick={() => handleShowChallenge}
-        />
-      ))}
-    </ChallengeListWrapper>
-  )
+  return (
+    <>
+      <ChallengeListHeader>
+        <ChallengeCount>{challenges.length} 문제</ChallengeCount>
+        <ChallengeSort>
+          <option>최신순</option>
+        </ChallengeSort>
+      </ChallengeListHeader>
+      <ChallengeListWrapper>
+        <ListTitle>
+          <ChallengeStatus>상태</ChallengeStatus>
+          <ChallengeTitle>제목</ChallengeTitle>
+          <ChallengeDifficulty>난이도</ChallengeDifficulty>
+          <ChallengeSubmitted>완료한 사람</ChallengeSubmitted>
+          <ChallengeAccuracy>정답률</ChallengeAccuracy>
+        </ListTitle>
+        {challenges.map((challenge) => (
+          <ChallengeUnit
+            key={challenge.problemId}
+            challenge={challenge}
+            onClick={() => handleShowChallenge}
+          />
+        ))}
+      </ChallengeListWrapper>
+    </>
+  );
 }
 
 export default ChallengeList;

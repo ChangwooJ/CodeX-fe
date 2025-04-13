@@ -3,7 +3,6 @@ import SearchImg from "../../assets/searchImg.svg?react";
 import SearchReset from "../../assets/closeImg.svg?react";
 import { useFilterStore } from "../../store/useFilterStore";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const SearchConsolWrapper = styled.div``;
 const SearchWrapper = styled.div`
@@ -16,6 +15,7 @@ const SearchWrapper = styled.div`
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 1.5%;
+  background-color: white;
 `;
 const SearchInput = styled.input`
   width: 90%;
@@ -36,6 +36,7 @@ const FilterWrapper = styled.div`
   width: 20%;
   margin-bottom: 3%;
   padding: 0 10px;
+  background-color: white;
 `;
 const DifficultySelect = styled.select`
   border: none;
