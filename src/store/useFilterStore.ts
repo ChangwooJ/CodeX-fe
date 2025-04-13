@@ -2,12 +2,14 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 type FilterStore = {
-  difficulty?: number;
+  difficulty?: number | undefined;
   setDifficulty: (difficult: number) => void;
+  setResetDifficulty: () => void;
   tags?: string;
   setTags: (tag: string) => void;
   title?: string;
   setSearchTitle: (searchKey: string) => void;
+  setResetSearchTitle: () => void;
 };
 
 export const useFilterStore = create<FilterStore>()(
@@ -20,8 +22,14 @@ export const useFilterStore = create<FilterStore>()(
       setSearchTitle: (searchKey) => 
         set(() => ({ title: searchKey })),
 
+      setResetSearchTitle: () =>
+        set(() => ({ title: undefined })),
+
       setDifficulty: (difficult) => 
         set(() => ({ difficulty: difficult })),
+
+      setResetDifficulty: () =>
+        set(() => ({ difficulty: undefined })),
 
       setTags: (tag) => 
         set(() => ({ tags: tag })),

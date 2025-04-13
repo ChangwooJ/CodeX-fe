@@ -2,6 +2,7 @@ import ChallengeUnit from "./components/ChallengeUnit";
 import styled from "styled-components";
 import { useGetChallenges } from "./query/challenges.query";
 import { useFilterStore } from "../../store/useFilterStore";
+import { useSearchParams } from "react-router-dom";
 
 const ChallengeListWrapper = styled.div`
   border: 1px solid var(--primary-border-color);
@@ -37,7 +38,11 @@ const ChallengeAccuracy = styled(CommonTitleStyle)`
 `;
 
 const ChallengeList = () => {
-  const { title, difficulty, tags } = useFilterStore();
+  const [searchParams] = useSearchParams();
+  const title = searchParams.get("title") ?? "";
+  const difficultyParam = searchParams.get("difficulty") ?? undefined;
+  const difficulty = difficultyParam !== undefined ? Number(difficultyParam) : undefined;
+  const { tags } = useFilterStore();
 
   const { data } = useGetChallenges(
     title,
