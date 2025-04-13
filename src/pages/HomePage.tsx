@@ -1,10 +1,33 @@
 import ChallengeList from "../feature/challengeList/ChallengeList";
+import styled from "styled-components";
+import SearchConsol from "../feature/searchConsol/searchConsol";
+
+const HomePageWrapper = styled.div`
+  padding: 0 10%;
+  width: 100%;
+  height: 100vh;
+  padding-top: 2%;
+  background-color: var(--primary-background-color);
+`;
+
+const ChallengeListContainer = styled.div`
+  width: 70%;
+`;
+
+const SearchConsolContainer = styled.div`
+
+`;
 
 const HomePage = () => {
   return (
-    <div>
-      <ChallengeList />
-    </div>
+    <HomePageWrapper>
+      <SearchConsolContainer>
+      </SearchConsolContainer>
+      <ChallengeListContainer>
+        <SearchConsol></SearchConsol>
+        <ChallengeList />
+      </ChallengeListContainer>
+    </HomePageWrapper>
   );
 };
 

@@ -9,6 +9,27 @@ import App from './App.tsx';
 
 const queryClient = new QueryClient();
 
+async function enableMocking() {
+  if (process.env.NODE_ENV === 'development') {
+    const { worker } = await import('./mocks/browser');
+    await worker.start();
+  }
+}
+
+enableMocking().then(() => {
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <App />
+        </ThemeProvider>
+      </QueryClientProvider>
+    </StrictMode>,
+  );
+});
+
+/*
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
@@ -18,4 +39,5 @@ createRoot(document.getElementById('root')!).render(
       </ThemeProvider>
     </QueryClientProvider>
   </StrictMode>,
-)
+);
+*/
