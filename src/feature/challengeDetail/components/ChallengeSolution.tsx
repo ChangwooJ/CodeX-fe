@@ -20,7 +20,7 @@ const ChallengeSolution = () => {
   };
 
   const handleEditorDidMount = (
-    editor: monacoEditor.editor.IStandaloneCodeEditor,
+    _editor: monacoEditor.editor.IStandaloneCodeEditor,
     monaco: typeof monacoEditor
   ) => {
     monaco.editor.defineTheme("custom-theme", {
