@@ -2,7 +2,7 @@ import ChallengeUnit from "./components/ChallengeUnit";
 import styled from "styled-components";
 import { useGetChallenges } from "./query/challenges.query";
 import { useFilterStore } from "../../store/useFilterStore";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const ChallengeListHeader = styled.div`
   display: flex;
@@ -56,6 +56,7 @@ const ChallengeAccuracy = styled(CommonTitleStyle)`
 `;
 
 const ChallengeList = () => {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const title = searchParams.get("title") ?? "";
   const difficultyParam = searchParams.get("difficulty") ?? undefined;
@@ -70,8 +71,8 @@ const ChallengeList = () => {
 
   const challenges = data.content;
 
-  const handleShowChallenge = () => {
-
+  const handleShowChallenge = (problemId: number) => {
+    navigate(`/challenge/${problemId}`);
   }
 
   return (
@@ -94,7 +95,7 @@ const ChallengeList = () => {
           <ChallengeUnit
             key={challenge.problemId}
             challenge={challenge}
-            onClick={() => handleShowChallenge}
+            onClick={() => handleShowChallenge(challenge.problemId)}
           />
         ))}
       </ChallengeListWrapper>
