@@ -27,8 +27,8 @@ const InOutputExample = styled.div`
 const ExampleTable = styled.table`
   margin-top: 3%;
   width: auto;
-  border-collapse: collapse; /* 경계선 정렬을 위한 추가 */
-  table-layout: auto; /* 자동 너비 조정 */
+  border-collapse: collapse;
+  table-layout: auto;
   background-color: #202B3D;
 
   thead {
