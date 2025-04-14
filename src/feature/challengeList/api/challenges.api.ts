@@ -13,7 +13,7 @@ export const getChallenges = async (
       tags,
     })
   );
-  console.log(params);
+  
   const { data } = await axios.get(`http://localhost:8000/api/challenges`, { params });
 
   return data;

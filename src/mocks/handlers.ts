@@ -1,5 +1,19 @@
 import { http, HttpResponse } from "msw";
 
+const challangesDetailData = [
+  {
+    "problemId": 1,
+    "title": "두 수의 곱 구하기",
+    "description": "정수 num1, num2가 매개변수 주어집니다. num1과 num2를 곱한 값을 return 하도록 solution 함수를 완성해주세요.",
+    "difficulty": 0,
+    "tags": "코딩테스트 입문",
+    "exampleInput": "[\"#.##.\", \"#o###\", \".o.#.\", \"#..#.\"]",
+    "exampleOutput": "27",
+    "totalSubmitted": 1023,
+    "totalAccuracy": "91"
+  },
+]
+
 export const handlers = [
   http.get('http://localhost:8000/api/challenges', () => {
     return HttpResponse.json({
@@ -13,5 +27,16 @@ export const handlers = [
         {problemId: 8, title: "[PCCE 기출문제] 1번 / 문자 출력", difficulty: 0, tag: "PCCE 기출문제", total_submitted: 15714, total_accuracy: 72.0},
       ],
     });
+  }),
+
+  http.get('http://localhost:8000/api/challenges/:problemId', ({params}) => {
+    const { problemId } = params;
+    const problem = challangesDetailData.find((item) => item.problemId === Number(problemId));
+
+    if (!problem) {
+      return new HttpResponse("Not Found", { status: 404 });
+    }
+
+    return HttpResponse.json(problem);
   })
 ];
