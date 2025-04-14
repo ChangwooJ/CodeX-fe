@@ -7,6 +7,7 @@ import ChallengeInfo from "./components/ChallengeInfo";
 import ChallengeSolution from "./components/ChallengeSolution";
 import ChallengeDetailFooter from "./components/ChallengeDetailFooter";
 import ChallengeSolutionResult from "./components/ChallengeSolutionResult";
+import ChallengeSubmitted from "./components/ChallengeSubmitted";
 
 const ChallengeDetailLogo = styled.div`
   display: flex;
@@ -91,6 +92,11 @@ const ChallengeDetailContainer = () => {
         {activeTab === "title" && (
           <ChallengeDetailInfoContainer>
             <ChallengeInfo challenge={data} />
+          </ChallengeDetailInfoContainer>
+        )}
+        {activeTab === "submitted" && (
+          <ChallengeDetailInfoContainer>
+            <ChallengeSubmitted />
           </ChallengeDetailInfoContainer>
         )}
         <SolutionContainerWrapper>
