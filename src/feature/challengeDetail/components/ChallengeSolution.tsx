@@ -29,8 +29,10 @@ const ChallengeSolution = () => {
       rules: [],
       colors: {
         "editor.background": "#263747",
-        "editor.foreground": "#FFFFFF",
+        "editor.foreground": "#4CAF50",
         "editorLineNumber.foreground": "#8b9bb4",
+        "editor.lineHighlightBackground": "#202B3D",
+        "editor.lineHighlightBorder": "#00000000",
       },
     });
 
@@ -46,12 +48,14 @@ const ChallengeSolution = () => {
         <MonacoEditor
           height="85%"
           defaultLanguage="python"
-          defaultValue="# 여기에 코드를 작성하세요"
+          defaultValue="def solution(num1, num2):
+    answer = 0
+    return answer"
           theme="custom-theme"
           onChange={handleEditorChange}
           onMount={handleEditorDidMount}
           options={{
-            fontSize: 14,
+            fontSize: 17,
             minimap: { enabled: false },
             automaticLayout: true,
           }}
