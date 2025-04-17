@@ -70,11 +70,11 @@ const ChallengeUnit = ({ challenge, onClick }: ChallengeUnitProp) => {
       <ChallengeStatus></ChallengeStatus>
       <ChallengeTitle>
         <ChallengeTitleMain>{challenge.title}</ChallengeTitleMain>
-        <ChallengeTitleSub>{challenge.tag}</ChallengeTitleSub>
+        <ChallengeTitleSub>{challenge.tags}</ChallengeTitleSub>
       </ChallengeTitle>
       <ChallengeDifficulty color={difficultyColor}>Lv. {challenge.difficulty}</ChallengeDifficulty>
-      <ChallengeSubmitted>{challenge.total_submitted}명</ChallengeSubmitted>
-      <ChallengeAccuracy>{challenge.total_accuracy}%</ChallengeAccuracy>
+      <ChallengeSubmitted>{challenge.totalSubmitted}명</ChallengeSubmitted>
+      <ChallengeAccuracy>{challenge.totalAccuracy}%</ChallengeAccuracy>
     </ListTitle>
   )
 }

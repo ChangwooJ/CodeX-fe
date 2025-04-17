@@ -13,8 +13,8 @@ export const getChallenges = async (
       tags,
     })
   );
-  
-  const { data } = await axios.get(`http://localhost:8000/api/challenges`, { params });
-
+  //`http://localhost:8000/api/challenges`
+  const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/problems`, { params });
+console.log(data);
   return data;
 };

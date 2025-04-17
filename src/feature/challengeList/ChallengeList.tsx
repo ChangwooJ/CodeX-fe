@@ -58,7 +58,7 @@ const ChallengeAccuracy = styled(CommonTitleStyle)`
 const ChallengeList = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const title = searchParams.get("title") ?? "";
+  const title = searchParams.get("title") ?? undefined;
   const difficultyParam = searchParams.get("difficulty") ?? undefined;
   const difficulty = difficultyParam !== undefined ? Number(difficultyParam) : undefined;
   const { tags } = useFilterStore();
