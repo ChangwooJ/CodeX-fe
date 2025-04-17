@@ -10,6 +10,9 @@ type FilterStore = {
   title?: string;
   setSearchTitle: (searchKey: string) => void;
   setResetSearchTitle: () => void;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+  resetFilters: () => void;
 };
 
 export const useFilterStore = create<FilterStore>()(
@@ -18,6 +21,7 @@ export const useFilterStore = create<FilterStore>()(
       difficulty: undefined,
       tags: undefined,
       title: undefined,
+      currentPage: 0,
 
       setSearchTitle: (searchKey) => 
         set(() => ({ title: searchKey })),
@@ -33,12 +37,16 @@ export const useFilterStore = create<FilterStore>()(
 
       setTags: (tag) => 
         set(() => ({ tags: tag })),
+
+      setCurrentPage: (page) =>
+        set(() => ({ currentPage: page })),
       
       resetFilters: () =>
         set(() => ({
           difficulty: undefined,
           tags: undefined,
           title: undefined,
+          currentPage: 0,
         })),
     }),
     {

@@ -8,7 +8,7 @@ const ListTitle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid var(--primary-border-color);
+  border-bottom: 1px solid var(--primary-border-color);
   gap: 5%;
   cursor: pointer;
 

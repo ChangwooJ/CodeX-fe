@@ -7,6 +7,24 @@ export interface ChallengeType {
   totalAccuracy: number;
 }
 
+export interface PageableType {
+  offset: number,
+  pageNumber: number,
+  pageSize: number,
+  paged: boolean,
+}
+
 export interface ChallengeResponseType {
-  content: ChallengeType[];
+  content: ChallengeType[],
+  first: boolean,
+  last: boolean,
+  pageable: PageableType,
+  totalPages: number,
+}
+
+export interface PageType {
+  first: boolean,
+  last: boolean,
+  totalPage: number,
+  currentPage: number,
 }
