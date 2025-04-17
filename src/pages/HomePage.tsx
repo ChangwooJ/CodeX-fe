@@ -3,10 +3,9 @@ import styled from "styled-components";
 import SearchConsol from "../feature/searchConsol/searchConsol";
 
 const HomePageWrapper = styled.div`
-  padding: 0 10%;
+  padding: 2% 10% 4% 10%;
   width: 100%;
-  height: 100vh;
-  padding-top: 2%;
+  height: fit-content;
   background-color: var(--primary-background-color);
 `;
 

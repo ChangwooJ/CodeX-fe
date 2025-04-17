@@ -66,7 +66,6 @@ const SearchConsol = () => {
   
   const handleResetSearch = () => {
     setResetSearchTitle();
-    console.log(title);
   }
 
   const handleSearch = () => {

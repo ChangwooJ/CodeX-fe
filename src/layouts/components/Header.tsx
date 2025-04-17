@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useFilterStore } from "../../store/useFilterStore";
 
 const HeaderContainer = styled.div`
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
@@ -50,8 +51,10 @@ const StyledLink = styled(Link)`
 
 const Header = () => {
   const navigate = useNavigate();
+  const { resetFilters } = useFilterStore();
 
   function handleHomeClick() {
+    resetFilters();
     navigate("/");
   }
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useGetChallenges } from "./query/challenges.query";
 import { useFilterStore } from "../../store/useFilterStore";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import PaginationConsol from "./components/PaginationConsol";
 
 const ChallengeListHeader = styled.div`
   display: flex;
@@ -22,6 +23,8 @@ const ChallengeSort = styled.select`
 `;
 
 const ChallengeListWrapper = styled.div`
+  box-sizing: border-box;
+  height: 640px;
   border: 1px solid var(--primary-border-color);
   border-radius: 5px;
   background-color: white;
@@ -41,6 +44,7 @@ const ListTitle = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5%;
+  border-bottom: 1px solid var(--primary-border-color);
 `;
 
 const ChallengeStatus = styled(CommonTitleStyle)`width: 5%;`;
@@ -55,21 +59,35 @@ const ChallengeAccuracy = styled(CommonTitleStyle)`
   text-align: right;
 `;
 
+const PaginationConsolContainer = styled.div`
+  margin-top: 30px;
+  width: 100%;
+  height: fit-content;
+`;
+
 const ChallengeList = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const title = searchParams.get("title") ?? undefined;
   const difficultyParam = searchParams.get("difficulty") ?? undefined;
   const difficulty = difficultyParam !== undefined ? Number(difficultyParam) : undefined;
-  const { tags } = useFilterStore();
+  const currentPage = useFilterStore(state => state.currentPage);
+  const tags = useFilterStore(state => state.tags);
 
   const { data } = useGetChallenges(
     title,
     difficulty,
     tags,
+    currentPage,
   );
 
   const challenges = data.content;
+  const page = {
+    first: data.first,
+    last: data.last,
+    totalPage: data.totalPages,
+    currentPage: data.pageable.pageNumber + 1,
+  };
 
   const handleShowChallenge = (problemId: number) => {
     navigate(`/challenge/${problemId}`);
@@ -99,6 +117,9 @@ const ChallengeList = () => {
           />
         ))}
       </ChallengeListWrapper>
+      <PaginationConsolContainer>
+        <PaginationConsol page={page} />
+      </PaginationConsolContainer>
     </>
   );
 }

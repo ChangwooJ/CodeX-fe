@@ -6,6 +6,7 @@ export const useGetChallenges = (
   title: string | undefined,
   difficulty: number | undefined,
   tags: string | undefined,
+  page: number,
 ) => {
   return useSuspenseQuery<ChallengeResponseType>({
     queryKey: [
@@ -13,8 +14,9 @@ export const useGetChallenges = (
       title || "",
       difficulty || "",
       tags || "",
+      page,
     ],
     queryFn: () =>
-      getChallenges(title, difficulty, tags),
+      getChallenges(title, difficulty, tags, page),
   });
 };
