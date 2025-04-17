@@ -13,9 +13,9 @@ const challangesDetailData = [
     "totalAccuracy": "91"
   },
 ]
-
+//http://localhost:8000/api/challenges
 export const handlers = [
-  http.get('http://localhost:8000/api/challenges', () => {
+  http.get(`${import.meta.env.VITE_API_URL}/problems`, () => {
     return HttpResponse.json({
       content: [{problemId: 1, title: "문자열과 알파벳과 쿼리", difficulty: 5, tag: "2025 프로그래머스 코드챌린지 본선", total_submitted: 13, total_accuracy: 0.0},
         {problemId: 2, title: "눈사람 만들기", difficulty: 5, tag: "2025 프로그래머스 코드챌린지 본선", total_submitted: 9, total_accuracy: 0.0},
@@ -28,8 +28,8 @@ export const handlers = [
       ],
     });
   }),
-
-  http.get('http://localhost:8000/api/challenges/:problemId', ({params}) => {
+//http://localhost:8000/api/challenges/:problemId
+  http.get(`${import.meta.env.VITE_API_URL}/problems/:problemId`, ({params}) => {
     const { problemId } = params;
     const problem = challangesDetailData.find((item) => item.problemId === Number(problemId));
 

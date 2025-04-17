@@ -8,7 +8,7 @@ import './index.css';
 import App from './App.tsx';
 
 const queryClient = new QueryClient();
-
+/*
 async function enableMocking() {
   if (process.env.NODE_ENV === 'development') {
     const { worker } = await import('./mocks/browser');
@@ -28,8 +28,8 @@ enableMocking().then(() => {
     </StrictMode>,
   );
 });
+*/
 
-/*
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
@@ -40,4 +40,4 @@ createRoot(document.getElementById('root')!).render(
     </QueryClientProvider>
   </StrictMode>,
 );
-*/
+
