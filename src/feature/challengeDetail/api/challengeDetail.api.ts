@@ -15,6 +15,7 @@ export const postChallengeSubmmit = async (
   language: string,
 ): Promise<any> => {
   const payload = {
+    problemId,
     userId,
     code,
     language,

@@ -4,6 +4,7 @@ import CommonComponents from './layouts/CommonComponents';
 
 import "./App.css";
 import ChallengeDetail from './pages/ChallengeDetail';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
         </Route>
         <Route path='/challenge/:problemId' element={<ChallengeDetail />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </Router>
   )

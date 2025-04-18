@@ -73,7 +73,7 @@ const Header = () => {
         </LogoSection>
         <NavigationSection></NavigationSection>
         <LoginSection>
-          <LoginButton>로그인</LoginButton>
+          <LoginButton onClick={() => navigate('/login')}>로그인</LoginButton>
         </LoginSection>
       </HeaderContain>
     </HeaderContainer>
