@@ -73,6 +73,9 @@ const ChallengeDetailContainer = () => {
   const id = Number(problemId);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"title" | "submitted">("title");
+  const [solutionCode, setSolutionCode] = useState<string>(
+    `def solution(num1, num2):\n    answer = 0\n    return answer`
+  );
 
   const { data } = useGetChallengeDetail(id);
 
@@ -101,7 +104,7 @@ const ChallengeDetailContainer = () => {
         )}
         <SolutionContainerWrapper>
           <ChallengeSolutionContainer>
-            <ChallengeSolution />
+            <ChallengeSolution code={solutionCode} setCode={setSolutionCode} />
           </ChallengeSolutionContainer>
           <ChallengeSolutionResultContainer>
             <ChallengeSolutionResult />
@@ -109,7 +112,7 @@ const ChallengeDetailContainer = () => {
         </SolutionContainerWrapper>
       </ChallengeDetailBody>
       <ChallengeDetailFooterContainer>
-        <ChallengeDetailFooter />
+        <ChallengeDetailFooter problemId={id} code={solutionCode} />
       </ChallengeDetailFooterContainer>
     </>
   );

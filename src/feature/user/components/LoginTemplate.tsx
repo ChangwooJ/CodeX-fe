@@ -78,6 +78,7 @@ const LoginTemplate = ({ onMenuChange }: LoginTemplateProps) => {
 
     try {
       await saveAuthTokens({ ...loginData });
+      alert("로그인 성공!");
       navigate("/");
     } catch (err) {
       console.log(err);

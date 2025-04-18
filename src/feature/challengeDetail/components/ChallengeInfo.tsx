@@ -72,10 +72,12 @@ const ChallengeInfo = ({ challenge }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {inputExamples.map((input: string, index: number) => (
-            <td key={index}>{input}</td>
-          ))}
-          <td>{outputExamples}</td>
+          <tr>
+            {inputExamples.map((input: string, index: number) => (
+              <td key={index}>{input}</td>
+            ))}
+            <td>{outputExamples}</td>
+          </tr>
         </tbody>
       </ExampleTable>
     </ChallengeInfoWrapper>

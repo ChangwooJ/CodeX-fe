@@ -8,6 +8,9 @@ interface AuthResponse {
   data: {
     accessToken: string;
     refreshToken: string;
+    userId: number;
+    email: string;
+    username: string;
   };
 }
 
@@ -17,12 +20,15 @@ export const saveAuthTokens = async (
   try {
     const response:AuthResponse = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, credentials);
 
-    const { accessToken, refreshToken } = response.data;
+    const { accessToken, refreshToken, userId, email, username } = response.data;
 
     const expiredTime = getTokenExpiration(accessToken);
     useAuthStore
       .getState()
       .setToken(accessToken, refreshToken, expiredTime || 59);
+    useAuthStore
+      .getState()
+      .setUserInfo(userId, email, username);
     queryClient.invalidateQueries({ queryKey: ["problems"] });
   } catch (error) {
     if (axios.isAxiosError(error)) {

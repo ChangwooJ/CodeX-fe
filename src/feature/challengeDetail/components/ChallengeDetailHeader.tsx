@@ -8,14 +8,14 @@ const HeaderTitles = styled.div`
   align-items: center;
   font-weight: bold;
 `;
-const HeaderItem = styled.div<{ isActive: boolean }>`
+const HeaderItem = styled.div<{ $isActive: boolean }>`
   display: flex;
   align-items: center;
   width: fit-content;
   height: 100%;
   margin: 0 10px;
-  color: ${({ isActive }) => (isActive ? "white" : "#4F6B81")};
-  border-bottom: 2px solid ${({ isActive }) => (isActive ? "white" : "none")};
+  color: ${({ $isActive }) => ($isActive ? "white" : "#4F6B81")};
+  border-bottom: 2px solid ${({ $isActive }) => ($isActive ? "white" : "none")};
   cursor: pointer;
 `;
 
@@ -33,13 +33,13 @@ const ChallengeDetailHeader = ({ challenge, activeTab, setActiveTab }: Props) =>
     <>
       <HeaderTitles>
         <HeaderItem
-          isActive={activeTab === "title"}
+          $isActive={activeTab === "title"}
           onClick={() => setActiveTab("title")}
         >
           {challenge.title}
         </HeaderItem>
         <HeaderItem
-          isActive={activeTab === "submitted"}
+          $isActive={activeTab === "submitted"}
           onClick={() => setActiveTab("submitted")}
         >
           제출 내역
