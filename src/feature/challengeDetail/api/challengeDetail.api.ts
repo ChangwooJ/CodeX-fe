@@ -5,6 +5,7 @@ export const getChallengeDetail = async (
   problemId: number,
 ): Promise<ChallengeDetailType> => {
   const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/problems/${problemId}`);
+  console.log(data);
   return data;
 };
 

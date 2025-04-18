@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { saveAuthTokens } from "../api/user.api";
 import { UserLoginType } from "../type/userType";
+import { useNavigate } from "react-router-dom";
 
 const LoginTemplateContainer = styled.div`
   display: flex;
@@ -50,6 +51,7 @@ type LoginTemplateProps = {
 };
 
 const LoginTemplate = ({ onMenuChange }: LoginTemplateProps) => {
+  const navigate = useNavigate();
   const [loginData, setLoginData] = useState<UserLoginType>({
     email: "",
     password: "",
@@ -74,7 +76,13 @@ const LoginTemplate = ({ onMenuChange }: LoginTemplateProps) => {
       return;
     }
 
-    await saveAuthTokens({ ...loginData });
+    try {
+      await saveAuthTokens({ ...loginData });
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+      setError("로그인에 실패했습니다.");
+    }
   };
 
   return (

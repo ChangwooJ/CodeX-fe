@@ -20,6 +20,7 @@ export interface ChallengeResponseType {
   last: boolean,
   pageable: PageableType,
   totalPages: number,
+  totalElements: number,
 }
 
 export interface PageType {

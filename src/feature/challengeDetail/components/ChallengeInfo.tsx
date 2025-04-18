@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { ChallengeDetailType } from "../type/challengeDetailType";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const ChallengeInfoWrapper = styled.div`
   box-sizing: border-box;
@@ -55,7 +57,9 @@ const ChallengeInfo = ({ challenge }: Props) => {
     <ChallengeInfoWrapper>
       <ChallengeDescription>
         <DescriptionTitle>문제 설명</DescriptionTitle>
-        {challenge.description}
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {challenge.description}
+        </ReactMarkdown>
       </ChallengeDescription>
       <InOutputExample>입출력 예</InOutputExample>
       <ExampleTable>
