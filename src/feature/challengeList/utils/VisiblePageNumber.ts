@@ -11,7 +11,7 @@ export const VisiblePageNumber = (page: PageType) => {
       visibleNumber.push(i);
     }
   } else {
-    for(let i = startPage; i <= startPage + 5; i++) {
+    for(let i = startPage; i <= startPage + 4; i++) {
       visibleNumber.push(i);
     }
   }

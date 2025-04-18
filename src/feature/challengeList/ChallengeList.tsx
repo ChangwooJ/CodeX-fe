@@ -87,6 +87,7 @@ const ChallengeList = () => {
     last: data.last,
     totalPage: data.totalPages,
     currentPage: data.pageable.pageNumber + 1,
+    totalElements: data.totalElements,
   };
 
   const handleShowChallenge = (problemId: number) => {
@@ -96,7 +97,7 @@ const ChallengeList = () => {
   return (
     <>
       <ChallengeListHeader>
-        <ChallengeCount>{challenges.length} 문제</ChallengeCount>
+        <ChallengeCount>{page.totalElements} 문제</ChallengeCount>
         <ChallengeSort>
           <option>최신순</option>
         </ChallengeSort>
