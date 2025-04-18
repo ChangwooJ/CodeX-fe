@@ -5,6 +5,10 @@ interface AuthState {
   accessToken: string | null;
   expiresAt: number | null;
   refreshToken: string | null;
+  userId: number | null;
+  email: string | null;
+  username: string | null;
+  setUserInfo: (userId: number, email: string, username: string) => void;
   setToken: (
     accessToken: string,
     refreshToken: string,
@@ -20,6 +24,13 @@ export const useAuthStore = create<AuthState>()(
       accessToken: null,
       refreshToken: null,
       expiresAt: null,
+      userId: null,
+      email: null,
+      username: null,
+      setUserInfo: (userId, email, username) => {
+        console.log(userId);
+        set({ userId, email, username });
+      },
       setToken: (accessToken, refreshToken, expiresInMinutes) => {
         const expiresAt = Date.now() + expiresInMinutes * 60 * 1000;
         set({ accessToken, refreshToken, expiresAt });
@@ -33,7 +44,7 @@ export const useAuthStore = create<AuthState>()(
         }));
       },
       clearToken: () =>
-        set({ accessToken: null, refreshToken: null, expiresAt: null }),
+        set({ accessToken: null, refreshToken: null, expiresAt: null, userId: null, email: null, username: null }),
     }),
     { name: "auth-storage" }
   )

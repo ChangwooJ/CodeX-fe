@@ -87,6 +87,7 @@ const UserBanner = () => {
   
   const handleLogout = () => {
     expireAuthTokens();
+    alert("로그아웃 성공!");
   }
 
   return (

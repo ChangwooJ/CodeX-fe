@@ -14,9 +14,14 @@ const SolutionType = styled.div`
   border-bottom: 1px solid var(--primary-section-color);
 `;
 
-const ChallengeSolution = () => {
+type ChallengeSolutionProps = {
+  code: string;
+  setCode: (code: string) => void;
+};
+
+const ChallengeSolution = ({ code, setCode }: ChallengeSolutionProps) => {
   const handleEditorChange = (value: string | undefined) => {
-    console.log("코드 내용:", value);
+    setCode(value ?? "");
   };
 
   const handleEditorDidMount = (
@@ -48,9 +53,7 @@ const ChallengeSolution = () => {
         <MonacoEditor
           height="85%"
           defaultLanguage="python"
-          defaultValue="def solution(num1, num2):
-    answer = 0
-    return answer"
+          value={code}
           theme="custom-theme"
           onChange={handleEditorChange}
           onMount={handleEditorDidMount}
