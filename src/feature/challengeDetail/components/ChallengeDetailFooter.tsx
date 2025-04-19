@@ -33,17 +33,27 @@ const ChallengeDetailFooter = ({ problemId, code }: ChallengeDetailFooterProps) 
   const { userId } = useAuthStore();
 
   const handleSummit = async () => {
+    if (!userId) {
+      alert("로그인이 필요합니다!");
+      return;
+    }
+    if (!code?.trim()) {
+      alert("코드를 입력해주세요!");
+      return;
+    }
     try {
-      await axios.post(
+      console.log(code);
+      const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/submissions`,
         { problemId, userId, code, language: "python" },
         {
           headers: {
             "Content-Type": "application/json",
-            withCredentials: true,
           },
+          withCredentials: true,
         }
       );
+      console.log(response);
       alert("제출 완료!");
     } catch (error) {
       if (axios.isAxiosError(error)) {
