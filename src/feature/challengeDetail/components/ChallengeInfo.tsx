@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ChallengeDetailType } from "../type/challengeDetailType";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
 
 const ChallengeInfoWrapper = styled.div`
   box-sizing: border-box;
@@ -49,15 +50,27 @@ interface Props {
 }
 
 const ChallengeInfo = ({ challenge }: Props) => {
-  const inputExamples = JSON.parse(challenge.exampleInput);
-  const outputExamples = JSON.parse(challenge.exampleOutput);
+  const parseExample = (example: string) => {
+    try {
+      const parsed = JSON.parse(example);
+      // 배열이 아니면 배열로 변환
+      if (Array.isArray(parsed)) return parsed;
+      return [parsed];
+    } catch {
+      // 파싱 실패시에도 배열로 반환
+      return [example];
+    }
+  };
+
+  const inputExamples = parseExample(challenge.exampleInput);
+  const outputExamples = parseExample(challenge.exampleOutput);
   const inputHeader = inputExamples.map((_: null, idx: number) => `입력 ${idx + 1}`);
   
   return (
     <ChallengeInfoWrapper>
       <ChallengeDescription>
         <DescriptionTitle>문제 설명</DescriptionTitle>
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
           {challenge.description}
         </ReactMarkdown>
       </ChallengeDescription>
